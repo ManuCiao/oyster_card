@@ -18,7 +18,7 @@ describe Oystercard do
     end
 
     it "raise an error when the balance limit is reached" do
-      subject.top_up(Oystercard::LIMIT)
+      subject.top_up(Oystercard::MAX_LIMIT)
       expect { subject.top_up(100)}.to raise_error("Cannot top up the amount as your limit has been reached!!")
     end
 
@@ -28,6 +28,9 @@ describe Oystercard do
     it { is_expected.to respond_to(:touch_in).with(0).argument}
     it "returns that you are in journey" do
       expect(subject.touch_in).to eq true
+    end
+    it 'return it will not touch in when below minimum balance' do
+      expect{ subject.touch_in }.to raise_error("Cannot touch in if you do not have the minimum fare available!!" )
     end
   end
 
