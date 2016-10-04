@@ -40,6 +40,10 @@ describe Oystercard do
     it "returns that you have finished the journey" do
       expect(subject.touch_out).to eq false
     end
+    it "returns deducted minimum fare from your card" do
+      expect{ subject.touch_out }.to change{ subject.balance }.by (-Oystercard::MIN_LIMIT)
+    end
+
   end
 
 

@@ -26,6 +26,7 @@ attr_reader :balance, :in_journey
   end
 
   def touch_out
+    deduct(@min_fare)
     @in_journey = false
   end
 
