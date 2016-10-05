@@ -4,6 +4,13 @@ describe Oystercard do
 
   subject(:card) {described_class.new}
   let(:station) {double :station}
+  let(:exit_station) {double :station}
+  let(:entry_station) {double :station}
+  #let(:journey) { {entry_station: entry_station, exit_station: exit_station} }
+
+it "returns list of journeys to be empty" do
+  expect(card.journeys).to eq []
+end
 
 it "should have a balance of zero" do
   expect(card.balance).to eq 0
@@ -33,7 +40,7 @@ it "should have the card remember the entry station name" do
 end
 
 it "should see if a card has touched out" do
-  card.touch_out
+  card.touch_out(station)
   expect(card.in_journey?).to eq false
 end
 
@@ -45,7 +52,15 @@ end
 it "should charge the card for the minimum fare" do
   card.top_up(15)
   card.touch_in(station)
-  expect {card.touch_out}.to change{card.balance}.by(-Oystercard::MINIMUM_FARE)
+  expect {card.touch_out(station)}.to change{card.balance}.by(-Oystercard::MINIMUM_FARE)
+end
+
+it "returns journey history" do
+  card.top_up(5)
+  card.touch_in(entry_station)
+  card.touch_out(exit_station)
+  journey = {entry_station: entry_station, exit_station: exit_station}
+  expect(card.journeys).to include journey
 end
 
 end
