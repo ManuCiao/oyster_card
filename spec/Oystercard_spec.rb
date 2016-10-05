@@ -33,16 +33,16 @@ xit 'should deduct the amount for the trip from balance' do
   expect(card.balance).to eq 5
 end
 
-it "should have the card remember the entry station name" do
-  card.top_up(1)
-  card.touch_in(station)
-  expect(card.entry_station).to eq station
-end
+# it "should have the card remember the entry station name" do
+#   card.top_up(1)
+#   card.touch_in(station)
+#   expect(card.entry_station).to eq station
+# end
 
-it "should see if a card has touched out" do
-  card.touch_out(station)
-  expect(card.in_journey?).to eq false
-end
+# it "should see if a card has touched out" do
+#   card.touch_out(station)
+#   expect(card.journey).to eq false
+# end
 
 it "should check minimum balance" do
   # allow(card).to receive(:balance) {0}
