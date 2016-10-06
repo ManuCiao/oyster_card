@@ -3,12 +3,9 @@ require "Journey.rb"
 describe Journey do
 
   subject(:journey){described_class.new(:station)}
-  #subject(:card) {described_class.new}
   let(:station) {double :station}
-  let(:entry_station) {double :station}
 
   it "returns an entry station" do
-    #card.touch_in(station)
     expect(journey.entry_station).to eq(:station)
   end
 
