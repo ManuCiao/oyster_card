@@ -7,9 +7,8 @@ class Oystercard
   MINIMUM_BALANCE = 1
   MINIMUM_FARE = 1
 
-  def initialize(journey = Journey.new)
+  def initialize
     @balance = 0
-    # @entry_station = nil
     @journeys = []
   end
 
@@ -22,10 +21,6 @@ class Oystercard
     raise "Insufficient funds" if @balance < MINIMUM_BALANCE
     @entry_station = station
   end
-
-  # def in_journey?
-  #   !!@entry_station
-  # end
 
   def touch_out(station)
     deduct(MINIMUM_FARE)
