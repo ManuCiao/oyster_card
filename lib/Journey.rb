@@ -1,8 +1,10 @@
-require_relative "Oystercard.rb"
+require_relative 'Oystercard'
 
 class Journey
 
  PENALTY = 6
+ MINIMUM_FARE = 1
+
 
 attr_reader :entry_station, :exit_station
 
@@ -18,11 +20,11 @@ def finish(station = nil)
 end
 
 def fare
-  return PENALTY if (!entry_station || !exit_station)
+  (!entry_station || !exit_station)? PENALTY : MINIMUM_FARE
 end
 
 def complete?
-    @complete
+  @complete
 end
 
 end

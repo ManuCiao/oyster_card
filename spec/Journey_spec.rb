@@ -33,6 +33,11 @@ describe Journey do
       expect(journey.fare).to eq Journey::PENALTY
     end
 
+    it 'return minimum fare charged when journey is been completed' do
+      journey.finish(:station)
+      expect(journey.fare).to eq Journey::MINIMUM_FARE
+    end
+
     it "should state that the journey has completed" do
       journey.finish(station)
       expect(journey).to be_complete
