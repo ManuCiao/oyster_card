@@ -61,4 +61,17 @@ I need to have the correct fare calculated
 Topics
 ------
 
+* [Gemfile] (http://tosbourn.com/what-is-the-gemfile/)
+* RSpec
+* Debugging
+* TDD
+* Raise Error
+* DRY - Don't repeat yourself
+* Predicate Methods
+* Refractoring
+* Edge case
+* SOLID principles
+* Parallel assignment on SO
+
+
 
