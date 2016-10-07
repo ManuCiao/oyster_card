@@ -1,4 +1,4 @@
-require "Journey.rb"
+require "journey"
 
 describe Journey do
 
@@ -46,7 +46,7 @@ describe Journey do
    end
 
    it "return penalty fare when there is no entry station" do
-     expect(journey.fare).to eq Journey::PENALTY_FARE
+     expect(journey.fare).to eq Journey::PENALTY
    end
 
   end

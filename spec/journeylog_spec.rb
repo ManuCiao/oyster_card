@@ -1,5 +1,4 @@
-require 'journeylog'
-require "Journey"
+require 'journeylog', 'journey'
 
 describe JourneyLog do
 

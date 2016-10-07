@@ -1,4 +1,4 @@
-require_relative 'Journey', 'journeylog'
+require_relative 'journey', 'journeylog'
 
 class Oystercard
 

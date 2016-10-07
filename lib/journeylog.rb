@@ -1,4 +1,4 @@
-require_relative 'Journey'
+require_relative 'journey'
 
 class JourneyLog
 

@@ -1,7 +1,7 @@
 class Journey
 
  PENALTY = 6
-
+ MINIMUM_FARE + 1
 
 attr_reader :entry_station, :exit_station
 
@@ -25,7 +25,7 @@ def complete?
 end
 
 def zone_fare
-  (entry_station.zone - exit_station.zone).abs + 1
+  (entry_station.zone - exit_station.zone).abs + MINIMUM_FARE
 end
 
 end
