@@ -1,9 +1,12 @@
-require_relative 'journey'
+require 'forwardable'
 
 class JourneyLog
 
-attr_reader :journey_class, :journeys
-attr_accessor :current_journey
+  extend Forwardable
+
+  def_delegator :current_journey, :finish, :end_journey
+  attr_reader :journey_class
+
 
   def initialize(journey_class: Journey)
     @journey_class = journey_class
@@ -15,23 +18,14 @@ attr_accessor :current_journey
     update_journey(journey_class.new(entry_station: station))
   end
 
-  def end_journey(station)
-    update_journey(current_journey.exit_station)
-    reset_journey
-  end
-
   def journeys
-    @journeys.dub
+    @journeys.dup
   end
 
   private
 
   def current_journey
-    !@current_journey.complete? || journey_class.new
-  end
-
-  def reset_journey
-    @current_journey = Journey.new
+    journeys.reject(&:complete?).first || journey_class.new
   end
 
   def update_journey(journey)
@@ -39,6 +33,6 @@ attr_accessor :current_journey
   end
 
   def double_entry?
-    current_journey.entry_station != nil
+    current_journey.entry_station
   end
 end
